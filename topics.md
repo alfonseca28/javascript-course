@@ -1,4 +1,4 @@
-*Curso Javascript*
+*Curso Javascript - Desarrollo Web*
 
 *Nivel 1: Fundamentos sólidos de JavaScript*
 Objetivo: Entender la sintaxis básica y la lógica de programación en JS.
