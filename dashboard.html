@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Quiniela</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Dashboard Quiniela Liga MX</title>
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 
 <body>
     <header>
         <h1>🏆 Quiniela Futbolera</h1>
-        <button class="logout-btn" id="logoutBtn">Cerrar sesión</button>
+        <p>Jornada 10 - Temporada 2025</p>
     </header>
 
     <main class="dashboard">
-        <!-- Aquí todo lo del dashboard (resumen, resultados, pronósticos, posiciones) -->
+        <!-- Resumen general -->
         <section class="card resumen">
             <h2>Resumen General</h2>
             <div class="stats">
@@ -34,6 +34,7 @@
             </div>
         </section>
 
+        <!-- Resultados -->
         <section class="card resultados">
             <h2>Resultados de la Jornada</h2>
             <table>
@@ -56,10 +57,50 @@
                         <td>Tigres vs Pumas</td>
                         <td>3 - 2</td>
                     </tr>
+                    <tr>
+                        <td>Liverpool vs City</td>
+                        <td>0 - 0</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
+        <!-- Tus pronósticos -->
+        <section class="card pronosticos">
+            <h2>Tus Pronósticos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Partido</th>
+                        <th>Tu Predicción</th>
+                        <th>Resultado Real</th>
+                        <th>Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Barcelona vs Real Madrid</td>
+                        <td>2 - 1</td>
+                        <td>2 - 1</td>
+                        <td>3 ✅</td>
+                    </tr>
+                    <tr>
+                        <td>América vs Chivas</td>
+                        <td>1 - 0</td>
+                        <td>1 - 1</td>
+                        <td>1 ⚪</td>
+                    </tr>
+                    <tr>
+                        <td>Tigres vs Pumas</td>
+                        <td>2 - 1</td>
+                        <td>3 - 2</td>
+                        <td>1 ⚪</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Tabla de posiciones -->
         <section class="card posiciones">
             <h2>Tabla de Posiciones</h2>
             <table>
@@ -86,13 +127,18 @@
                         <td>Tú 😎</td>
                         <td>24</td>
                     </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Laura García</td>
+                        <td>23</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 Quiniela Futbolera</p>
+        <p>© 2025 Quiniela Futbolera — Todos los derechos reservados</p>
     </footer>
 </body>
 
