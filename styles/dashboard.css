@@ -16,16 +16,92 @@ body {
 
 /* ===== Encabezado ===== */
 header {
-  background: #0077b6;
-  color: white;
-  text-align: center;
-  padding: 1.5rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #0077b6, #023e8a);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
 }
 
-header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.3rem;
+/* Sección izquierda (título y jornada) */
+.brand h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.brand p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Navegación (lado derecho) */
+header nav {
+  display: flex;
+  gap: 1.2rem;
+}
+
+/* ====== Estilo de botones del nav ====== */
+header nav a {
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  background: #0077b6;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Hover (cuando pasas el cursor) */
+header nav a:hover {
+  background: #00b4d8;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Activo (botón de la página actual) */
+header nav a.active {
+  background: #ffdd00;
+  color: #023e8a;
+}
+
+/* Botón especial "Cerrar sesión" */
+header nav a.logout {
+  background: #ef233c;
+}
+
+header nav a.logout:hover {
+  background: #d90429;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  header nav a {
+    font-size: 0.9rem;
+  }
+
+  header .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
 }
 
 /* ===== Dashboard grid ===== */
