@@ -1,47 +1,28 @@
 <?php
-session_start();
-include("../config/db.php");
+include('../config/db.php');
 
-// Recibe datos del formulario
-$nombre = trim($_POST['nombre']);
-$correo = trim($_POST['correo']);
-$password = trim($_POST['password']);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nombre = $_POST['nombre'];
+    $username = $_POST['username'];
+    $correo = $_POST['correo'];
+    $telefono = $_POST['telefono'] ?? null;
+    $area = $_POST['area'] ?? null;
+    $sede = $_POST['sede'] ?? null;
+    $password = $_POST['password'];
 
-// Validar datos básicos
-if (empty($nombre) || empty($correo) || empty($password)) {
-    $_SESSION['error'] = "Todos los campos son obligatorios.";
-    header("Location: ../views/register.php");
-    exit;
+    // Encriptar contraseña
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+    $sql = "INSERT INTO usuarios (nombre, username, correo, telefono, area, sede, password_hash, rol_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?, 2)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssss", $nombre, $username, $correo, $telefono, $area, $sede, $password_hash);
+
+    if ($stmt->execute()) {
+        header("Location: ../views/login.php?success=1");
+        exit();
+    } else {
+        echo "Error al registrar usuario: " . $stmt->error;
+    }
 }
-
-// Verifica si ya existe el correo
-$stmt = $conn->prepare("SELECT id FROM usuarios WHERE correo = ?");
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-$stmt->store_result();
-
-if ($stmt->num_rows > 0) {
-    $_SESSION['error'] = "El correo ya está registrado.";
-    header("Location: ../views/register.php");
-    exit;
-}
-
-// Cifra la contraseña
-$hash = password_hash($password, PASSWORD_BCRYPT);
-
-// Inserta el nuevo usuario
-$stmt = $conn->prepare("INSERT INTO usuarios (nombre, correo, password_hash, rol_id) VALUES (?, ?, ?, 2)");
-$stmt->bind_param("sss", $nombre, $correo, $hash);
-
-if ($stmt->execute()) {
-    $_SESSION['usuario_id'] = $stmt->insert_id;
-    $_SESSION['nombre'] = $nombre;
-    $_SESSION['rol'] = 2;
-    header("Location: ../views/dashboard.php");
-} else {
-    $_SESSION['error'] = "Error al registrar usuario.";
-    header("Location: ../views/register.php");
-}
-
-$stmt->close();
-$conn->close();

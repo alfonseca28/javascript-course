@@ -31,7 +31,7 @@ CREATE TABLE
         nombre VARCHAR(100) NOT NULL,
         correo VARCHAR(100) NOT NULL UNIQUE,
         password_hash VARCHAR(255) NOT NULL,
-        rol_id INT DEFAULT 2,
+        rol_id INT NOT NULL DEFAULT 2,
         fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (rol_id) REFERENCES roles (id)
     );
