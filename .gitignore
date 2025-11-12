@@ -1,0 +1,2 @@
+# Ignorar la carpeta de configuracion (credenciales, ajustes, etc.)
+/config/
