@@ -24,67 +24,9 @@ $partidos = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apostar | Quiniela MX</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <style>
-        .apuestas-container {
-            max-width: 900px;
-            margin: 2rem auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        h2 {
-            color: #1565c0;
-            margin-bottom: 1rem;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .partido {
-            border: 1px solid #eee;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            background: #fafafa;
-        }
-
-        .equipos {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .opciones {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 0.5rem;
-        }
-
-        .opciones label {
-            cursor: pointer;
-        }
-
-        .monto {
-            margin-top: 0.8rem;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        .sin-partidos {
-            text-align: center;
-            color: #777;
-            padding: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/dashboard.css">
+    <link rel="stylesheet" href="../public/css/responsive.css">
 </head>
 
 <body>

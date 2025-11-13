@@ -1,28 +1,44 @@
 <?php
+// views/login.php
 session_start();
 if (isset($_SESSION['usuario_id'])) {
-    header("Location: dashboard.php");
-    exit;
+  header("Location: dashboard.php");
+  exit;
 }
-?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sesión | Quiniela MX</title>
-  <link rel="stylesheet" href="../public/css/styles.css">
-</head>
-<body>
-  <div class="container">
-    <h2>Iniciar sesión</h2>
-    <form action="../actions/login_action.php" method="POST">
-      <input type="email" name="correo" placeholder="Correo electrónico" required>
-      <input type="password" name="password" placeholder="Contraseña" required>
-      <button type="submit">Entrar</button>
+$pageTitle = "Iniciar sesión - Quiniela MX";
+// indicamos estilos extra (rutas absolutas desde web root)
+$styles = ['/public/css/auth.css'];
+include('../includes/header.php');
+?>
+<div class="auth-wrap">
+  <div class="auth-card" role="main" aria-labelledby="login-title">
+    <h2 id="login-title"><span class="icon">🔐</span> Iniciar sesión</h2>
+
+    <?php if (!empty($_SESSION['error'])): ?>
+      <div style="margin-bottom:12px;color:#ffb4b4;background:#4d2b2b;padding:8px;border-radius:8px;">
+        <?php echo htmlspecialchars($_SESSION['error']);
+        unset($_SESSION['error']); ?>
+      </div>
+    <?php endif; ?>
+
+    <form action="../actions/login_action.php" method="POST" novalidate>
+      <div class="input-group">
+        <label class="input-label" for="correo">Correo electrónico</label>
+        <input id="correo" class="input-field" type="email" name="correo" placeholder="tu@correo.com" required>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="password">Contraseña</label>
+        <input id="password" class="input-field" type="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <button class="btn-primary" type="submit">Entrar</button>
     </form>
-    <p>¿No tienes cuenta? <a href="register.php">Regístrate aquí</a></p>
+
+    <div class="auth-footer">
+      ¿No tienes cuenta? <a href="register.php">Regístrate aquí</a>
+    </div>
   </div>
-</body>
-</html>
+</div>
+<?php include('../includes/footer.php'); ?>

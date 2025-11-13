@@ -1,0 +1,51 @@
+/* ===== dashboard.css ===== */
+.header {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+}
+
+.header nav a {
+  color: white;
+  margin: 0 1rem;
+  font-weight: 500;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}
+
+.section {
+  margin: 2rem 0;
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.win {
+  color: green;
+}
+
+.status.lose {
+  color: red;
+}
+
+.status.pending {
+  color: #999;
+}

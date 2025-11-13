@@ -35,47 +35,9 @@ $apuestas = $conn->query($sql_apuestas);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Quiniela MX</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <style>
-        .dashboard {
-            max-width: 1000px;
-            margin: 2rem auto;
-            display: grid;
-            gap: 2rem;
-        }
-
-        .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
-            color: #1565c0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 0.8rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f5f5f5;
-        }
-
-        tr:hover {
-            background-color: #fafafa;
-        }
-    </style>
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/dashboard.css">
+    <link rel="stylesheet" href="../public/css/responsive.css">
 </head>
 
 <body>

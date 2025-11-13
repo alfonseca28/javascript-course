@@ -1,82 +1,68 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+// views/register.php
+session_start();
+if (isset($_SESSION['usuario_id'])) {
+    header("Location: dashboard.php");
+    exit;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro | Quiniela MX</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+$pageTitle = "Crear cuenta - Quiniela MX";
+$styles = ['/public/css/auth.css'];
+include('../includes/header.php');
+?>
+<div class="auth-wrap">
+    <div class="auth-card" role="main" aria-labelledby="register-title">
+        <h2 id="register-title"><span class="icon">📝</span> Crear cuenta</h2>
 
-        .register-container {
-            width: 400px;
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+        <?php if (!empty($_SESSION['error'])): ?>
+            <div style="margin-bottom:12px;color:#ffb4b4;background:#4d2b2b;padding:8px;border-radius:8px;">
+                <?php echo htmlspecialchars($_SESSION['error']);
+                unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
 
-        h2 {
-            text-align: center;
-            color: #1565c0;
-            margin-bottom: 1rem;
-        }
+        <form action="../actions/register_action.php" method="POST" novalidate>
+            <div class="input-group">
+                <label class="input-label" for="nombre">Nombre completo</label>
+                <input id="nombre" class="input-field" type="text" name="nombre" placeholder="Nombre completo" required>
+            </div>
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 0.5rem 0;
-            border: 1px solid #ccc;
-            border-radius: 0.5rem;
-        }
+            <div class="input-group">
+                <label class="input-label" for="username">Nombre de usuario</label>
+                <input id="username" class="input-field" type="text" name="username" placeholder="Usuario" required>
+            </div>
 
-        button {
-            width: 100%;
-            background: #1565c0;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
+            <div class="input-group">
+                <label class="input-label" for="correo">Correo electrónico</label>
+                <input id="correo" class="input-field" type="email" name="correo" placeholder="tu@correo.com" required>
+            </div>
 
-        button:hover {
-            background: #0d47a1;
-        }
+            <div class="input-group">
+                <label class="input-label" for="telefono">Número de teléfono</label>
+                <input id="telefono" class="input-field" type="tel" name="telefono" placeholder="55 1234 5678">
+            </div>
 
-        .login-link {
-            text-align: center;
-            margin-top: 1rem;
-        }
-    </style>
-</head>
+            <div class="input-group">
+                <label class="input-label" for="area">Área o departamento</label>
+                <input id="area" class="input-field" type="text" name="area" placeholder="IT, Marketing, etc.">
+            </div>
 
-<body>
-    <div class="register-container">
-        <h2>Crear cuenta</h2>
-        <form action="../actions/register_action.php" method="POST">
-            <input type="text" name="nombre" placeholder="Nombre completo" required>
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="email" name="correo" placeholder="Correo electrónico" required>
-            <input type="text" name="telefono" placeholder="Número de teléfono">
-            <input type="text" name="area" placeholder="Área o departamento">
-            <input type="text" name="sede" placeholder="Sede (por ejemplo, CDMX)">
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Registrarse</button>
+            <div class="input-group">
+                <label class="input-label" for="sede">Sede</label>
+                <input id="sede" class="input-field" type="text" name="sede" placeholder="CDMX, Monterrey...">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="password">Contraseña</label>
+                <input id="password" class="input-field" type="password" name="password" placeholder="••••••••" required>
+            </div>
+
+            <button class="btn-primary" type="submit">Registrarse</button>
         </form>
-        <div class="login-link">
-            <p>¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></p>
+
+        <div class="auth-footer">
+            ¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a>
         </div>
     </div>
-</body>
-
-</html>
+</div>
+<?php include('../includes/footer.php'); ?>

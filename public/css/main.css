@@ -1,0 +1,92 @@
+/* ===== main.css ===== */
+:root {
+  --primary: #1565c0;
+  --primary-dark: #0d47a1;
+  --bg: #f3f4f6;
+  --text: #333;
+  --radius: 12px;
+  --transition: 0.2s ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Contenedor centrado genérico */
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Botones */
+button,
+.btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+button:hover,
+.btn:hover {
+  background: var(--primary-dark);
+}
+
+/* Inputs */
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: left;
+}
+
+th {
+  background-color: #f9fafb;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Enlaces */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
