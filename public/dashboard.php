@@ -18,7 +18,9 @@ $rol_id = $_SESSION['rol_id']; // 1 = Admin, 2 = Usuario normal
 <head>
     <meta charset="UTF-8">
     <title>Dashboard | Quiniela</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
 <body>
