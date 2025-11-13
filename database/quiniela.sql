@@ -1,7 +1,5 @@
 -- ========================================
 --  CREACIÓN BASE DE DATOS QUINIELA (MySQL)
---  Versión simplificada sin manejo de dinero real
---  Autor: Aarón Alfonseca / ChatGPT (2025)
 -- ========================================
 CREATE DATABASE IF NOT EXISTS quiniela CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
@@ -29,12 +27,16 @@ CREATE TABLE
     usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY,
         nombre VARCHAR(100) NOT NULL,
+        username VARCHAR(50) NOT NULL UNIQUE,
         correo VARCHAR(100) NOT NULL UNIQUE,
+        telefono VARCHAR(20) DEFAULT NULL,
+        area VARCHAR(100) DEFAULT NULL,
+        sede VARCHAR(100) DEFAULT NULL,
         password_hash VARCHAR(255) NOT NULL,
         rol_id INT NOT NULL DEFAULT 2,
         fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (rol_id) REFERENCES roles (id)
-    );
+        CONSTRAINT fk_usuarios_roles FOREIGN KEY (rol_id) REFERENCES roles (id)
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
 -- ========================================
 -- 3. Tabla: equipos
