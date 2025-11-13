@@ -1,0 +1,50 @@
+/* ===============================
+   HEADER / NAVBAR
+=============================== */
+
+.main-header {
+  background-color: #1c1c1c;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f1c40f;
+}
+
+.main-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-header .logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.main-header h1 {
+  color: #f1c40f;
+  font-size: 1.4rem;
+}
+
+.nav-links a {
+  color: #fff;
+  margin-left: 1.5rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.logout-btn:hover {
+  background-color: #ff6b5a;
+}

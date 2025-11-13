@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
-<body>
+<body class="auth-page">
     <div class="form-container">
         <h2>Iniciar sesión</h2>
         <?php if (isset($_GET['registro']) && $_GET['registro'] === 'exitoso'): ?>
