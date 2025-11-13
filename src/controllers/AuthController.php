@@ -18,25 +18,54 @@ class AuthController
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nombre = trim($_POST['nombre']);
-            $username = trim($_POST['username']);
-            $correo = trim($_POST['correo']);
-            $password = $_POST['password'];
+            // Recoger y sanitizar
+            $nombre = trim($_POST['nombre'] ?? '');
+            $username = trim($_POST['username'] ?? '');
+            $correo = trim($_POST['correo'] ?? '');
+            $password = $_POST['password'] ?? '';
+            $telefono = trim($_POST['telefono'] ?? null);
+            $area = trim($_POST['area'] ?? null);
+            $sede = trim($_POST['sede'] ?? null);
 
+            // Validaciones básicas
             if (!$nombre || !$username || !$correo || !$password) {
-                $error = "Todos los campos son obligatorios.";
+                $error = "Los campos Nombre, Usuario, Correo y Contraseña son obligatorios.";
                 include __DIR__ . '/../../public/register.php';
                 exit;
             }
 
-            $password_hash = password_hash($password, PASSWORD_BCRYPT);
+            if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+                $error = "El correo no tiene un formato válido.";
+                include __DIR__ . '/../../public/register.php';
+                exit;
+            }
 
+            // Revisar si existe username o correo
             try {
-                $this->usuarioModel->registrar($nombre, $username, $correo, $password_hash);
+                $existe = $this->usuarioModel->existeUsernameOCorreo($username, $correo);
+                if ($existe) {
+                    // Determinar si es username o correo
+                    if ($existe['username'] === $username) {
+                        $error = "El nombre de usuario ya existe. Elige otro.";
+                    } else {
+                        $error = "El correo ya está registrado. Usa otro correo o inicia sesión.";
+                    }
+                    include __DIR__ . '/../../public/register.php';
+                    exit;
+                }
+
+                // Hashear contraseña
+                $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+                // Registrar usuario
+                $this->usuarioModel->registrar($nombre, $username, $correo, $password_hash, $telefono, $area, $sede);
+
+                // Redirigir al login con mensaje
                 header('Location: index.php?registro=exitoso');
                 exit;
             } catch (PDOException $e) {
-                $error = "Error: El usuario o correo ya existe.";
+                // Mensaje genérico para no filtrar detalles DB
+                $error = "Error al registrar el usuario. Intenta de nuevo más tarde.";
                 include __DIR__ . '/../../public/register.php';
                 exit;
             }
@@ -47,8 +76,8 @@ class AuthController
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $login = trim($_POST['login']);
-            $password = $_POST['password'];
+            $login = trim($_POST['login'] ?? '');
+            $password = $_POST['password'] ?? '';
 
             $usuario = $this->usuarioModel->obtenerPorLogin($login);
 
