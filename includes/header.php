@@ -5,7 +5,7 @@
 // IMPORTANTE: ajustar la ruta de include desde la ubicación del archivo que lo usa.
 // En tus views actuales (en /views) usar: include('../includes/header.php');
 
-if (!isset($pageTitle)) $pageTitle = "Quiniela MX";
+if (!isset($pageTitle)) $pageTitle = "Quiniela Sistemas - Liguilla MX";
 ?>
 <!DOCTYPE html>
 <html lang="es">

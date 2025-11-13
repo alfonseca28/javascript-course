@@ -6,15 +6,16 @@ if (isset($_SESSION['usuario_id'])) {
   exit;
 }
 
-$pageTitle = "Iniciar sesión - Quiniela MX";
+$pageTitle = "Quiniela Sistemas - Liguilla MX";
 // indicamos estilos extra (rutas absolutas desde web root)
 $styles = ['/public/css/auth.css'];
 include('../includes/header.php');
 ?>
 <div class="auth-wrap">
   <div class="auth-card" role="main" aria-labelledby="login-title">
-    <h2 id="login-title"><span class="icon">🔐</span> Iniciar sesión</h2>
-
+    <h2 id="login-title">⚽ Quiniela Sistemas ⚽ Liguilla MX</h2>
+    <h2 id="login-title"></h2>Liguilla MX</h2>
+    
     <?php if (!empty($_SESSION['error'])): ?>
       <div style="margin-bottom:12px;color:#ffb4b4;background:#4d2b2b;padding:8px;border-radius:8px;">
         <?php echo htmlspecialchars($_SESSION['error']);
