@@ -1,100 +1,58 @@
 <?php
-include('../includes/auth.php');
-include('../config/db.php');
-include('../includes/navbar.php');
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
-$usuario_id = $_SESSION['usuario_id'];
-
-// Obtener últimos partidos
-$sql_partidos = "
-  SELECT p.id, e1.nombre AS local, e2.nombre AS visitante, p.fecha_hora, p.resultado
-  FROM partidos p
-  JOIN equipos e1 ON p.equipo_local_id = e1.id
-  JOIN equipos e2 ON p.equipo_visitante_id = e2.id
-  ORDER BY p.fecha_hora DESC
-  LIMIT 5;
-";
-$partidos = $conn->query($sql_partidos);
-
-// Obtener tus apuestas recientes
-$sql_apuestas = "
-  SELECT a.id, e.nombre AS equipo, a.monto, a.pronostico, a.estado
-  FROM apuestas a
-  JOIN equipos e ON a.equipo_id = e.id
-  WHERE a.usuario_id = $usuario_id
-  ORDER BY a.fecha_apuesta DESC
-  LIMIT 5;
-";
-$apuestas = $conn->query($sql_apuestas);
+include_once "../includes/header.php";
+require_once "../config/db.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+<link rel="stylesheet" href="../public/css/dashboard.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Quiniela MX</title>
-    <link rel="stylesheet" href="../public/css/main.css">
-    <link rel="stylesheet" href="../public/css/dashboard.css">
-    <link rel="stylesheet" href="../public/css/responsive.css">
-</head>
-
-<body>
-
-    <div class="dashboard">
-        <div class="card">
-            <h3>👋 Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>!</h3>
-            <p>Desde aquí puedes revisar tus apuestas, ver los resultados más recientes y participar en la Quiniela MX.</p>
+<main class="dashboard-container">
+    <section class="dashboard-section resultados">
+        <h2>Resultados de la Jornada</h2>
+        <div class="resultados-list">
+            <!-- Aquí se mostrarán los resultados dinámicos -->
+            <p>Cargando resultados...</p>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>🏟️ Últimos partidos</h3>
-            <table>
+    <section class="dashboard-section apuestas">
+        <h2>Mis Pronósticos</h2>
+        <div class="apuestas-list">
+            <!-- Aquí se mostrarán las apuestas del usuario -->
+            <p>No has realizado apuestas aún.</p>
+        </div>
+    </section>
+
+    <section class="dashboard-section posiciones">
+        <h2>Tabla de Posiciones</h2>
+        <table class="tabla-posiciones">
+            <thead>
                 <tr>
-                    <th>Local</th>
-                    <th>Visitante</th>
-                    <th>Fecha/Hora</th>
-                    <th>Resultado</th>
+                    <th>Usuario</th>
+                    <th>Aciertos</th>
                 </tr>
-                <?php while ($row = $partidos->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo $row['local']; ?></td>
-                        <td><?php echo $row['visitante']; ?></td>
-                        <td><?php echo date('d/m/Y H:i', strtotime($row['fecha_hora'])); ?></td>
-                        <td><?php echo $row['resultado'] ? $row['resultado'] : 'Pendiente'; ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            </table>
-        </div>
-
-        <div class="card">
-            <h3>💸 Tus apuestas recientes</h3>
-            <table>
+            </thead>
+            <tbody>
                 <tr>
-                    <th>Equipo</th>
-                    <th>Pronóstico</th>
-                    <th>Monto</th>
-                    <th>Estado</th>
+                    <td>Juan Pérez</td>
+                    <td>8</td>
                 </tr>
-                <?php if ($apuestas->num_rows > 0): ?>
-                    <?php while ($ap = $apuestas->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo $ap['equipo']; ?></td>
-                            <td><?php echo ucfirst($ap['pronostico']); ?></td>
-                            <td>$<?php echo number_format($ap['monto'], 2); ?></td>
-                            <td><?php echo ucfirst($ap['estado']); ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="4" style="text-align:center;">No tienes apuestas aún.</td>
-                    </tr>
-                <?php endif; ?>
-            </table>
-        </div>
-    </div>
+                <tr>
+                    <td>María López</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>Tú</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
 
-</body>
-
-</html>
+<?php include_once "../includes/footer.php"; ?>
