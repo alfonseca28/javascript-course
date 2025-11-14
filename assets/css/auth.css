@@ -45,3 +45,12 @@ button {
 button:hover {
   background-color: #ffda44;
 }
+
+.error {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}

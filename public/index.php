@@ -1,12 +1,23 @@
 <?php
+session_start();
+
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../src/controllers/AuthController.php';
 
 $auth = new AuthController($pdo);
+
+// Capturar mensajes de error en sesión
+$error = "";
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']); // se borra para que no aparezca nuevamente
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $auth->login();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -24,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (isset($_GET['registro']) && $_GET['registro'] === 'exitoso'): ?>
             <p class="success">Registro exitoso. Ahora puedes iniciar sesión.</p>
         <?php endif; ?>
-        <?php if (isset($error)): ?>
+        <?php if (!empty($error)): ?>
             <p class="error"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
         <form method="POST" action="">
