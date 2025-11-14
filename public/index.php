@@ -32,19 +32,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="auth-page">
     <div class="form-container">
         <h2>Iniciar sesión</h2>
+
+        <!-- NOTIFICACIÓN DE REGISTRO EXITOSO -->
         <?php if (isset($_GET['registro']) && $_GET['registro'] === 'exitoso'): ?>
-            <p class="success">Registro exitoso. Ahora puedes iniciar sesión.</p>
+            <div class="alert success show">
+                Registro exitoso. Ahora puedes iniciar sesión.
+            </div>
         <?php endif; ?>
+
+        <!-- NOTIFICACIÓN DE ERROR -->
         <?php if (!empty($error)): ?>
-            <p class="error"><?= htmlspecialchars($error) ?></p>
+            <div class="alert error show">
+                <?= htmlspecialchars($error) ?>
+            </div>
         <?php endif; ?>
+
         <form method="POST" action="">
             <input type="text" name="login" placeholder="Usuario o correo" required>
             <input type="password" name="password" placeholder="Contraseña" required>
             <button type="submit">Ingresar</button>
         </form>
+
         <p>¿No tienes cuenta? <a href="register.php">Regístrate</a></p>
     </div>
+
+    <!-- SCRIPT PARA QUE LA ALERTA SE OCUlTE AUTOMÁTICAMENTE -->
+    <script>
+        const alert = document.querySelector(".alert");
+        if (alert) {
+            setTimeout(() => {
+                alert.classList.remove("show");
+            }, 3000);
+        }
+    </script>
+
 </body>
 
 </html>

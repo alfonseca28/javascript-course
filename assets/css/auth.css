@@ -46,11 +46,28 @@ button:hover {
   background-color: #ffda44;
 }
 
-.error {
-  background-color: #e74c3c;
-  color: #fff;
-  padding: 8px 12px;
+.alert {
+  padding: 10px;
   border-radius: 6px;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.alert.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.alert.error {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.alert.success {
+  background-color: #2ecc71;
+  color: black;
 }
