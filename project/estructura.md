@@ -1,53 +1,46 @@
-/quiniela/
-│
-├── /config/
-│   ├── db.php               ← conexión a la base de datos
-│   └── config.php           ← constantes generales (nombre del sitio, etc)
-│
-├── /public/
-│   ├── index.php            ← página principal / login
-│   ├── register.php         ← registro
-│   ├── dashboard.php        ← página principal después de login
-│   ├── logout.php           ← cerrar sesión
-│
-├── /assets/
-│   ├── /css/
-│   │   └── style.css
-│   ├── /js/
-│   │   └── main.js
-│   └── /images/
-│       └── logos/
-│
-├── /src/
-│   ├── /models/
-│   ├── /controllers/
-│   └── /views/
-│
-└── .htaccess (opcional)
-
-
-
-/quiniela/
-│
-├── /config/
-│   ├── db.php
-│   └── config.php
-│
-├── /public/
-│   ├── index.php          ← login
-│   ├── register.php       ← registro
-│   ├── dashboard.php      ← después de login
-│   ├── logout.php         ← cerrar sesión
-│
-├── /src/
-│   ├── /controllers/
-│   │   ├── AuthController.php
-│   └── /models/
-│       ├── Usuario.php
-│
-├── /assets/
-│   ├── /css/
-│   │   └── style.css
-│   └── /js/
-│       └── main.js
-
+```
+└── 📁html_css_js_php_mysql_course
+    └── 📁assets
+        └── 📁css
+            ├── auth.css
+            ├── base.css
+            ├── dasboard.css
+            ├── header.css
+            ├── style.css
+    └── 📁config
+        ├── config.php
+        ├── db.php
+        ├── test_db.php
+    └── 📁database
+        ├── quiniela.sql
+    └── 📁includes
+        ├── footer.php
+        ├── header.php
+        ├── navbar.php
+    └── 📁project
+        ├── estructura.md
+    └── 📁public
+        └── 📁admin
+            ├── resultados.php
+        ├── apostar.php
+        ├── dashboard.php
+        ├── index.php
+        ├── logout.php
+        ├── mis_puntos.php
+        ├── partidos.php
+        ├── ranking.php
+        ├── register.php
+        ├── registrar_resultados.php
+    └── 📁src
+        └── 📁controllers
+            ├── AuthController.php
+            ├── PuntosController.php
+            ├── ResultadosController.php
+        └── 📁models
+            ├── Apuesta.php
+            ├── Equipo.php
+            ├── Partido.php
+            ├── Puntos.php
+            ├── Usuario.php
+    └── .gitignore
+```
