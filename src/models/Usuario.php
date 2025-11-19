@@ -58,7 +58,7 @@ class Usuario
             u.username,
             COALESCE(SUM(pu.puntos_obtenidos), 0) AS puntos_totales
         FROM usuarios u
-        LEFT JOIN puntos_usuarios pu ON u.id = pu.usuario_id
+        LEFT JOIN puntos pu ON u.id = pu.usuario_id
         GROUP BY u.id
         ORDER BY puntos_totales DESC, u.nombre ASC
     ";
