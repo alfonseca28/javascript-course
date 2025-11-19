@@ -65,3 +65,15 @@
 .card button:hover {
   background-color: #ffda44;
 }
+
+.card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card input[type="number"] {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+}

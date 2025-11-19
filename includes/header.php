@@ -37,6 +37,9 @@ if (!isset($pageTitle)) $pageTitle = "Quiniela MX";
             <a href="/views/dashboard.php">Inicio</a>
             <a href="/views/apuestas.php">Apuestas</a>
             <a href="/views/resultados.php">Resultados</a>
+            <?php if ($_SESSION['rol_id'] == 1): ?>
+                <a href="admin/resultados.php">Cargar Resultados</a>
+            <?php endif; ?>
             <a href="/views/perfil.php">Perfil</a>
             <a href="/actions/logout.php" class="logout-btn">Salir</a>
         </nav>

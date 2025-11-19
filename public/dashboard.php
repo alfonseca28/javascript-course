@@ -10,6 +10,9 @@ if (!isset($_SESSION['usuario_id'])) {
 // Obtenemos datos del usuario en sesión
 $nombre = $_SESSION['nombre'];
 $rol_id = $_SESSION['rol_id']; // 1 = Admin, 2 = Usuario normal
+
+$historial = $usuarioModel->obtenerHistorialPuntos($_SESSION['usuario_id']);
+
 ?>
 
 <!DOCTYPE html>
