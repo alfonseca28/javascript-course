@@ -44,4 +44,27 @@ class Puntos
 
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function obtenerHistorialPuntos($usuarioId)
+    {
+        $sql = "
+        SELECT 
+            pp.puntos_obtenidos,
+            pp.fecha_registro,
+            pa.id AS partido_id,
+            pa.equipo_local_id,
+            pa.equipo_visitante_id,
+            pa.fecha AS fecha_partido,
+            pa.jornada,
+            pa.estadio
+        FROM puntos_partidos pp
+        INNER JOIN partidos pa ON pp.partido_id = pa.id
+        WHERE pp.usuario_id = :uid
+        ORDER BY pp.fecha_registro DESC
+    ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':uid' => $usuarioId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

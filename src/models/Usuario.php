@@ -75,12 +75,16 @@ class Usuario
             p.partido_id,
             p.puntos_obtenidos,
             p.fecha,
+
             pa.marcador_local,
             pa.marcador_visitante,
-            pa.equipo_local,
-            pa.equipo_visitante
+            e1.nombre AS equipo_local,
+            e2.nombre AS equipo_visitante
+
         FROM puntos p
         INNER JOIN partidos pa ON p.partido_id = pa.id
+        INNER JOIN equipos e1 ON pa.equipo_local_id = e1.id
+        INNER JOIN equipos e2 ON pa.equipo_visitante_id = e2.id
         WHERE p.usuario_id = :uid
         ORDER BY p.fecha DESC
     ";
