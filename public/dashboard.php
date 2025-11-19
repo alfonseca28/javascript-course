@@ -1,6 +1,18 @@
 <?php
 session_start();
 
+require_once "../config/db.php";
+require_once "../src/models/Usuario.php";
+
+// Si el usuario no ha iniciado sesión, lo mandamos al login
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: index.php');
+    exit;
+}
+// <--- Crear conexión PDO
+$usuarioModel = new Usuario($pdo);  // <--- Pasar conexión al modelo
+
+
 // Si el usuario no ha iniciado sesión, lo mandamos al login
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: index.php');
