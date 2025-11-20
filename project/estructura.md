@@ -4,7 +4,7 @@
         └── 📁css
             ├── auth.css
             ├── base.css
-            ├── dasboard.css
+            ├── dashboard.css
             ├── header.css
             ├── style.css
     └── 📁config
