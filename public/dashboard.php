@@ -137,10 +137,26 @@ if (method_exists($usuarioModel, 'obtenerRankingUsuarios')) {
                     <tbody>
                         <?php foreach ($historial as $row): ?>
                             <tr>
-                                <td><?= htmlspecialchars($row['equipo_local']) ?> vs <?= htmlspecialchars($row['equipo_visitante']) ?></td>
-                                <td><?= htmlspecialchars($row['marcador_local']) ?> - <?= htmlspecialchars($row['marcador_visitante']) ?></td>
-                                <td class="puntos"><?= htmlspecialchars($row['puntos_obtenidos']) ?></td>
-                                <td><?= htmlspecialchars($row['fecha']) ?></td>
+                                <td>
+                                    <?= htmlspecialchars($row['equipo_local'] ?? '') ?>
+                                    vs
+                                    <?= htmlspecialchars($row['equipo_visitante'] ?? '') ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars($row['marcador_local'] ?? '') ?>
+                                    -
+                                    <?= htmlspecialchars($row['marcador_visitante'] ?? '') ?>
+                                </td>
+
+                                <td class="puntos">
+                                    <?= htmlspecialchars($row['puntos_obtenidos'] ?? '0') ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars($row['fecha'] ?? '') ?>
+                                </td>
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
