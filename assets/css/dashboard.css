@@ -183,3 +183,12 @@
     width: 100%;
   }
 }
+/* Separación entre secciones del dashboard */
+.dashboard-section {
+  margin-top: 2rem; /* separa verticalmente */
+}
+
+/* Opcional: más aire dentro de cada card */
+.card {
+  margin-bottom: 2rem;
+}

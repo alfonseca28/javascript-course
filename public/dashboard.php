@@ -206,10 +206,12 @@ if (method_exists($usuarioModel, 'obtenerRankingUsuarios')) {
                 </table>
             </section>
         <?php endif; ?>
-        <div class="card">
-            <h4>Mis Puntos</h4>
-            <p>Consulta el detalle por partido.</p>
-            <a href="mis_puntos.php"><button>Ver puntos</button></a>
+        <div class="dashboard-section">
+            <div class="card">
+                <h4>Mis Puntos</h4>
+                <p>Consulta el detalle por partido.</p>
+                <a href="mis_puntos.php"><button>Ver puntos</button></a>
+            </div>
         </div>
 
         <div class="card">
