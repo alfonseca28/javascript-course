@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) session_start();
 ?>
 <header class="navbar">
-    <h1>⚽ Quiniela MX</h1>
+    <h1>⚽ Quiniela Sistemas - Liguilla MX</h1>
     <nav>
         <a href="dashboard.php">Inicio</a>
         <a href="apuestas.php">Apostar</a>

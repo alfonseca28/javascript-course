@@ -32,7 +32,7 @@ if (!isset($pageTitle)) $pageTitle = "Quiniela MX";
 <body>
     <!-- 🔹 Header global (navbar) -->
     <header class="main-header">
-        <div class="logo">🏆 Quiniela MX</div>
+        <div class="logo">🏆 Quiniela Sistemas - Liguilla MX</div>
         <nav class="navbar">
             <a href="/views/dashboard.php">Inicio</a>
             <a href="/views/apuestas.php">Apuestas</a>
